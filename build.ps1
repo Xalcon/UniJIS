@@ -51,7 +51,7 @@ for($i = 0; $i -lt 16; $i++)
     }
 }
 
-$file = Get-Content .\template.h.tpl
+$file = Get-Content  "$PSScriptRoot\template.h.tpl"
 if(!(Test-Path "$PSScriptRoot/out"))
 {
     mkdir out
