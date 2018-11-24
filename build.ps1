@@ -1,6 +1,6 @@
 $ErrorActionPreference = "stop"
 
-$shiftJis = Get-Content "mapping/SHIFTJIS.TXT"
+$shiftJis = Get-Content "$PSScriptRoot/mapping/SHIFTJIS.TXT"
 
 $groups = @{ }
 
@@ -52,9 +52,9 @@ for($i = 0; $i -lt 16; $i++)
 }
 
 $file = Get-Content .\template.h.tpl
-if(!(Test-Path "out"))
+if(!(Test-Path "$PSScriptRoot/out"))
 {
     mkdir out
 }
-$file.Replace("/*%SHIFT_JIS_UTF8_GROUPS%*/", $sb.ToString()).Replace("/*%SHIFT_JIS_UTF8_GROUP_MAP%*/", $sb2.ToString()) | Out-File "out\ShiftJisUtf16.h" -Force
-Write-Host "Wrote file to out\ShiftJisUtf16.h"
+$file.Replace("/*%SHIFT_JIS_UTF8_GROUPS%*/", $sb.ToString()).Replace("/*%SHIFT_JIS_UTF8_GROUP_MAP%*/", $sb2.ToString()) | Out-File "$PSScriptRoot/out/ShiftJisUtf16.h" -Force
+Write-Host "Wrote file to $PSScriptRoot/out/ShiftJisUtf16.h"
