@@ -54,7 +54,7 @@ for($i = 0; $i -lt 16; $i++)
 $file = Get-Content  "$PSScriptRoot\template.h.tpl"
 if(!(Test-Path "$PSScriptRoot/out"))
 {
-    mkdir out
+    mkdir "$PSScriptRoot/out"
 }
 $file.Replace("/*%SHIFT_JIS_UTF8_GROUPS%*/", $sb.ToString()).Replace("/*%SHIFT_JIS_UTF8_GROUP_MAP%*/", $sb2.ToString()) | Out-File "$PSScriptRoot/out/ShiftJisUtf16.h" -Force
 Write-Host "Wrote file to $PSScriptRoot/out/ShiftJisUtf16.h"
